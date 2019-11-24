@@ -13,16 +13,35 @@ class Client {
     Server  server  = service.getPort(Server.class);
     String message = "";
     
-    while(true)
+    if(args.length != 2)
     {
-    	System.out.println("Digite uma mensagem");
-        Scanner scanner = new Scanner(System.in);
-        message         = scanner.nextLine();
-        if(message.equals("Over"))
-        {
-        	break;
-        }
-        System.out.println("Sua mensagem: " + server.PublishMessage(message));	
+    	System.out.println("Use only two numbers");
+    	return;
     }
+    
+    float num1;
+    float num2;
+    
+    try
+    {
+    	num1 = Float.parseFloat(args[0]);
+    }
+    catch (Exception e) 
+    {
+		System.out.print("Failed to convert the first input to a integer");
+		return;
+	}
+    
+    try
+    {
+    	num2 = Float.parseFloat(args[1]);
+    }
+    catch (Exception e) 
+    {
+		System.out.print("Failed to convert the second input to a integer");
+		return;
+	}
+    
+    System.out.println(num1 + " + " + num2 + " = " + server.Add(num1, num2));
   }
 }

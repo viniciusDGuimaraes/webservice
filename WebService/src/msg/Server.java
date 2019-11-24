@@ -7,5 +7,5 @@ import javax.jws.soap.SOAPBinding.Style;
 @WebService
 @SOAPBinding(style = Style.RPC)
 public interface Server {
-  @WebMethod String PublishMessage(String msg);
+  @WebMethod float Add(float num1, float num2);
 }
